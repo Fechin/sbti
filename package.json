@@ -1,5 +1,5 @@
 {
-  "name": "sbti",
+  "name": "@fechin/sbti",
   "version": "0.1.0",
   "description": "Interactive SBTI personality test CLI and installable skill.",
   "main": "src/index.js",
@@ -44,11 +44,11 @@
   "author": "Fechin <admin@fechin.me>",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Fechin/sbti-skill.git"
+    "url": "git+https://github.com/Fechin/sbti.git"
   },
-  "homepage": "https://github.com/Fechin/sbti-skill#readme",
+  "homepage": "https://github.com/Fechin/sbti#readme",
   "bugs": {
-    "url": "https://github.com/Fechin/sbti-skill/issues"
+    "url": "https://github.com/Fechin/sbti/issues"
   },
   "publishConfig": {
     "access": "public"

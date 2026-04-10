@@ -1,13 +1,13 @@
-# sbti
+# @fechin/sbti
 
-`sbti` is a runnable SBTI personality test package and skill repository.
+`@fechin/sbti` is a runnable SBTI personality test package and skill repository.
 
 ## Install
 
 After publishing to npm:
 
 ```bash
-npm install sbti
+npm install @fechin/sbti
 ```
 
 During local development:
@@ -50,7 +50,7 @@ npx sbti --lang en
 ## Library usage
 
 ```js
-const { runTest } = require("sbti");
+const { runTest } = require("@fechin/sbti");
 
 async function main() {
   const result = await runTest({
@@ -70,13 +70,13 @@ main();
 Tested local-development command with the public `skill` CLI (`1.0.2`):
 
 ```bash
-SKILL_BASE_URL=https://github.com/Fechin/sbti-skill/tree/main npx skill skills/sbti
+SKILL_BASE_URL=https://github.com/Fechin/sbti/tree/main npx skill skills/sbti
 ```
 
 Repository target requested for future installers:
 
 ```bash
-npx skill add https://github.com/Fechin/sbti-skill
+npx skill add https://github.com/Fechin/sbti
 ```
 
-On April 10, 2026, the public npm package `skill@1.0.2` does not support `add <url>`. This repository includes `skills/sbti/` so it works with the currently supported `SKILL_BASE_URL=... npx skill skills/sbti` flow once the GitHub repository exists.
+On April 10, 2026, the public npm package `skill@1.0.2` does not support `add <url>`. This repository includes `skills/sbti/` so it works with the currently supported `SKILL_BASE_URL=... npx skill skills/sbti` flow.

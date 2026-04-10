@@ -10,6 +10,7 @@ const { execFileSync, spawn } = require("node:child_process");
 
 const repoRoot = path.join(__dirname, "..");
 const packageJson = require(path.join(repoRoot, "package.json"));
+const packageName = packageJson.name;
 
 function run(command, args, options = {}) {
   return execFileSync(command, args, {
@@ -140,7 +141,9 @@ async function main() {
   const tempRoot = await fsp.mkdtemp(path.join(os.tmpdir(), "sbti-release-"));
   const packageDir = path.join(tempRoot, "package-test");
   const skillDir = path.join(tempRoot, "skill-test");
-  const tarballName = `sbti-${packageJson.version}.tgz`;
+  const tarballName = `${packageName
+    .replace(/^@/, "")
+    .replace(/\//g, "-")}-${packageJson.version}.tgz`;
   const tarballPath = path.join(repoRoot, tarballName);
   let server;
 
@@ -165,7 +168,7 @@ async function main() {
     const apiSmoke = runIn(packageDir, process.execPath, [
       "-e",
       [
-        "const {runTest, answersFromPattern} = require('sbti');",
+        `const {runTest, answersFromPattern} = require('${packageName}');`,
         "(async () => {",
         "const result = await runTest({language:'en', answers: answersFromPattern('HHH-HMH-MHH-HHH-MHM'), specialAnswers:[1,1]});",
         "console.log(JSON.stringify({personality: result.personality, score: result.score}));",
