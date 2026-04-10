@@ -1,6 +1,6 @@
 {
   "name": "@fechin/sbti",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Free SBTI personality test CLI, sbti test engine, and installable skill for Silly Big Personality Test results.",
   "main": "src/index.js",
   "types": "index.d.ts",
