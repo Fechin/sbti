@@ -1,4 +1,4 @@
 interface:
   display_name: "SBTI"
-  short_description: "Run the SBTI personality test"
-  default_prompt: "Run the SBTI personality test in the user's preferred language and summarize the result clearly."
+  short_description: "Run the SBTI personality test and explain SBTI results"
+  default_prompt: "Run the SBTI personality test in the user's preferred language, explain what SBTI means if needed, and summarize the final SBTI personality type and top matches clearly."
