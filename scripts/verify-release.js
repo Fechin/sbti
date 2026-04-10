@@ -84,6 +84,15 @@ function hasCommand(command) {
   }
 }
 
+function findPythonCommand() {
+  for (const command of ["python3", "python"]) {
+    if (hasCommand(command)) {
+      return command;
+    }
+  }
+  return null;
+}
+
 function contentType(filePath) {
   if (filePath.endsWith(".json")) {
     return "application/json; charset=utf-8";
@@ -141,6 +150,7 @@ async function main() {
   const tempRoot = await fsp.mkdtemp(path.join(os.tmpdir(), "sbti-release-"));
   const packageDir = path.join(tempRoot, "package-test");
   const skillDir = path.join(tempRoot, "skill-test");
+  const pythonCommand = findPythonCommand();
   const tarballName = `${packageName
     .replace(/^@/, "")
     .replace(/\//g, "-")}-${packageJson.version}.tgz`;
@@ -225,6 +235,37 @@ async function main() {
       fs.existsSync(path.join(installedSkill, "agents", "openai.yaml")),
       true
     );
+    assert.equal(
+      fs.existsSync(path.join(installedSkill, "data", "question-bank.json")),
+      true
+    );
+    assert.equal(
+      fs.existsSync(path.join(installedSkill, "scripts", "run_sbti.py")),
+      true
+    );
+    assert.equal(
+      fs.existsSync(path.join(installedSkill, "scripts", "sbti_engine.py")),
+      true
+    );
+    assert.equal(
+      fs.existsSync(path.join(installedSkill, "references", "manual-workflow.md")),
+      true
+    );
+
+    if (pythonCommand) {
+      console.log("6.1 Verifying installed self-contained skill runtime");
+      const skillSmoke = runIn(skillDir, pythonCommand, [
+        path.join(installedSkill, "scripts", "run_sbti.py"),
+        "--preset",
+        "CTRL",
+        "--lang",
+        "en",
+        "--json"
+      ]);
+      const skillPayload = JSON.parse(skillSmoke);
+      assert.equal(skillPayload.personality, "CTRL");
+      assert.equal(skillPayload.score, 100);
+    }
 
     console.log("Release verification passed");
   } finally {

@@ -1,6 +1,6 @@
 # @fechin/sbti
 
-`@fechin/sbti` is a free SBTI personality test package, terminal-friendly `sbti test` CLI, and installable skill for people who want a fast, playful `SBTI personality` result without leaving their local workflow. It is built for the same entertainment-first use case behind searches such as `sbti 人格`, `sbti 人格测试`, `sbti test`, `sbti personality`, and `sbti 中文测试`.
+`@fechin/sbti` is a free SBTI personality test package, terminal-friendly `sbti test` CLI, and self-contained installable skill for people who want a fast, playful `SBTI personality` result without leaving their local workflow. It is built for the same entertainment-first use case behind searches such as `sbti 人格`, `sbti 人格测试`, `sbti test`, `sbti personality`, and `sbti 中文测试`.
 
 Online version: [https://sbti.now/](https://sbti.now/)
 
@@ -11,7 +11,7 @@ If you are looking for `what is sbti`, `sbti meaning`, or `Silly Big Personality
 - a fast `SBTI personality test` CLI
 - a reusable question bank for `人格测试` and `人格类型测试` flows
 - built-in scoring for `sbti 结果`, `sbti 性格`, and `sbti 类型`
-- an installable skill for running the same experience inside agent workflows
+- an installable, self-contained skill for running the same experience inside agent workflows
 
 It is designed for lightweight, shareable, internet-style personality testing rather than clinical assessment. If users are comparing `sbti vs mbti` or `sbti mbti`, the simplest framing is: MBTI is the familiar reference point, while SBTI is the more playful, meme-native, entertainment-first personality test format.
 
@@ -21,7 +21,7 @@ It is designed for lightweight, shareable, internet-style personality testing ra
 - Ships with a complete `SBTI personality test` question bank and local scoring engine.
 - Returns structured `sbti 结果` data, including personality code, score, vector, and top matches.
 - Covers popular `sbti 类型` lookups such as `sbti ctrl`, `sbti malo`, `sbti 伪人`, `sbti 妈妈`, `sbti 多情者`, `sbti gogo`, and `imsb`.
-- Works both as an npm package and as a skill repository for the live site and local agents.
+- Works both as an npm package and as a self-contained skill repository for the live site and local agents.
 
 ## Install
 
@@ -118,6 +118,18 @@ Tested local-development command with the public `skill` CLI (`1.0.2`):
 
 ```bash
 SKILL_BASE_URL=https://github.com/Fechin/sbti/tree/main npx skill skills/sbti
+```
+
+The bundled skill is self-contained. After installation, it can run from its own files without depending on the `sbti` npm command:
+
+```bash
+python3 .codebuddy/skills/sbti/scripts/run_sbti.py --preset CTRL --lang en --json
+```
+
+If a host AI can read local files but cannot execute Python, use the bundled fallback:
+
+```text
+.codebuddy/skills/sbti/references/manual-workflow.md
 ```
 
 Repository target requested for future installers:
