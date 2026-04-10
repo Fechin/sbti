@@ -10,6 +10,8 @@ This repository is both:
 - an npm package that exposes the `sbti` CLI
 - an installable skill repository
 
+Online version: [https://sbti.now/](https://sbti.now/)
+
 ## Preferred execution path
 
 1. Use `sbti` if the CLI is installed.

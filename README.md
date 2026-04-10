@@ -2,6 +2,8 @@
 
 `@fechin/sbti` is a runnable SBTI personality test package and skill repository.
 
+Online version: [https://sbti.now/](https://sbti.now/)
+
 ## Install
 
 After publishing to npm:

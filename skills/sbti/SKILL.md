@@ -7,6 +7,8 @@ description: Run the SBTI personality test when users ask for an SBTI assessment
 
 Use this skill when the user wants to take the SBTI personality test or re-run it in Chinese or English.
 
+Online version: [https://sbti.now/](https://sbti.now/)
+
 ## Workflow
 
 1. Prefer the local `sbti` CLI if available.
