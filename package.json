@@ -1,0 +1,56 @@
+{
+  "name": "sbti",
+  "version": "0.1.0",
+  "description": "Interactive SBTI personality test CLI and installable skill.",
+  "main": "src/index.js",
+  "types": "index.d.ts",
+  "bin": {
+    "sbti": "bin/sbti.js",
+    "sbti-test": "bin/sbti.js"
+  },
+  "exports": {
+    ".": "./src/index.js",
+    "./data/question-bank.json": "./data/question-bank.json",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "agents",
+    "bin",
+    "data",
+    "skills",
+    "src",
+    "index.d.ts",
+    "LICENSE",
+    "README.md",
+    "SKILL.md"
+  ],
+  "scripts": {
+    "lint": "node --check src/index.js && node --check src/cli.js && node --check bin/sbti.js && node --check test/core.test.js && node --check test/cli.test.js && node --check test/skill-layout.test.js && node --check scripts/verify-release.js",
+    "test": "node --test",
+    "verify:release": "node scripts/verify-release.js",
+    "prepack": "npm run lint && npm test"
+  },
+  "keywords": [
+    "sbti",
+    "personality",
+    "test",
+    "skill",
+    "cli"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT",
+  "author": "Fechin <admin@fechin.me>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fechin/sbti-skill.git"
+  },
+  "homepage": "https://github.com/Fechin/sbti-skill#readme",
+  "bugs": {
+    "url": "https://github.com/Fechin/sbti-skill/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

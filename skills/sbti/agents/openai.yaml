@@ -1,0 +1,4 @@
+interface:
+  display_name: "SBTI"
+  short_description: "Run the SBTI personality test"
+  default_prompt: "Run the SBTI personality test and explain the result."
